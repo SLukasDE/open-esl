@@ -54,9 +54,9 @@
 
 // zsystem4esl
 #if ESL_USE_ZSYSTEM4ESL == 1
-#include <esl/system/DefaultProcess.h>
-#include <esl/system/DefaultSignalManager.h>
-#include <esl/system/DefaultStacktraceFactory.h>
+#include <esl/system/ZSProcess.h>
+#include <esl/system/ZSSignalManager.h>
+#include <esl/system/ZSStacktraceFactory.h>
 #endif
 
 // opengtx4esl
@@ -136,9 +136,11 @@ void Plugin::install(esl::plugin::Registry& registry, const char* data) {
 
 	// zsystem4esl
 #if ESL_USE_ZSYSTEM4ESL == 1
-	registry.addPlugin("esl/system/DefaultProcess", esl::system::DefaultProcess::create);
-	registry.addPlugin("esl/system/DefaultSignalManager", esl::system::DefaultSignalManager::create);
-	registry.addPlugin("esl/system/DefaultStacktraceFactory", esl::system::DefaultStacktraceFactory::create);
+	registry.addPlugin("esl/system/ZSProcess", esl::system::ZSProcess::create);
+	registry.addPlugin("esl/system/ZSSignalManager", esl::system::ZSSignalManager::create);
+	registry.addPlugin("esl/system/ZSStacktraceFactory", esl::system::ZSStacktraceFactory::create);
+
+	registry.setObject(esl::system::ZSStacktraceFactory::createNative());
 #endif
 
 
